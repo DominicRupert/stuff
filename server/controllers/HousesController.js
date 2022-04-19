@@ -52,4 +52,13 @@ export class HousesController extends BaseController {
       next(error)
     }
   }
+
+  async destroy(req, res, next) {
+    try {
+      await housesService.destroy(req.params.id, req.userInfo.id)
+      return res.send('house be gone')
+    } catch (error) {
+      next(error)
+    }
+  }
 }

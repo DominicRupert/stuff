@@ -34,6 +34,14 @@ class HousesService {
     await original.save()
     return original
   }
+
+  async destroy(id, userId) {
+    const house = await this.getById(id)
+    if (house.creatorId.toString() !== userId) {
+      throw new Forbidden('can"t do it')
+    }
+    await dbContext.Houses.findByIdAndDelete(id)
+  }
 }
 
 export const housesService = new HousesService()
