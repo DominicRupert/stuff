@@ -10,8 +10,8 @@ export class HousesController extends BaseController {
       .get('/:id', this.getById)
       .use(Auth0Provider.getAuthorizedUserInfo)
       .post('', this.create)
-    //   .put('/:id', this.edit)
-    //   .delete('/:id', this.destroy)
+      .put('/:id', this.edit)
+      .delete('/:id', this.destroy)
   }
 
   async getAll(req, res, next) {
